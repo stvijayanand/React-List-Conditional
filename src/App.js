@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    text: '',
+    length: 0
+  }
+
+
+  changeHandler = (event) => {
+    const len = event.target.value.length;
+
+    this.setState({
+      text: event.target.value,
+      length: len
+    });
+
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input type="text" onChange={this.changeHandler} value={this.state.text}></input>
+        <p>Length: {this.state.length}</p>
       </div>
     );
   }
