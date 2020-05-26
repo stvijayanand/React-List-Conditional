@@ -4,10 +4,10 @@ import './Char.css'
 
 const Char = (props) => {
 
-    const {letter} = props;
+    const {clicked, letter} = props;
 
     return(
-        <div className="Char">
+        <div className="Char" onClick={clicked}>
             {letter}
         </div>
     );

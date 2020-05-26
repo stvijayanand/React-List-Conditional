@@ -21,16 +21,36 @@ class App extends Component {
   }
 
 
+  deleteLetterHandler = (index) => {
+    const charArr = this.state.text.split('');
+    charArr.splice(index, 1)
+
+    this.setState({
+      text: charArr.join(''),
+      length: charArr.length
+    });
+  }
+
+
   render() {
+
+    const chars = this.state.text.split('').map((l, index) => {
+      return <Char
+              key={index}
+              clicked={() => this.deleteLetterHandler(index)} 
+              letter={l}></Char>;
+    })
+
+
+
+
     return (
       <div className="App">
         <input type="text" onChange={this.changeHandler} value={this.state.text}></input>
         <p>Length: {this.state.length}</p>
         <Validation length={this.state.length}></Validation>
 
-        {this.state.text.split('').map(l => {
-          return <Char letter={l}></Char>;
-        })}
+        {chars}
         
       </div>
     );

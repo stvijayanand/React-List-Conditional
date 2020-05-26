@@ -10,7 +10,7 @@ const Validation = (props) => {
         comment = 'Text too short';
     }
     else{
-        comment = 'Text too long';
+        comment = 'Text long enough';
     }
 
     return(
